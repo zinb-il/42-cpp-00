@@ -1,4 +1,4 @@
-SRCS = main.cpp
+SRCS = main.cpp PhoneBook.cpp Contact.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -9,15 +9,19 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = megaphone
 
 $(NAME) :
-	$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
+	@echo "\033[0;32mParfait !!\033[0;0m"
+
 
 all : $(NAME)
 
 clean : 
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
+	@echo "\033[0;31mles fichiers .o sont supprimés\033[0;0m"
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\033[0;31mVotre programme est bien supprimé\033[0;0m"
 
 re : fclean all
 

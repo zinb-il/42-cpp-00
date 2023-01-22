@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:15:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/22 00:10:28 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/22 23:21:46 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define HEADER_HPP
 
 #include <iostream>
+#include <iomanip>
+#include <string>
 #include "Contact.hpp"
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 #   endif

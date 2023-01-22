@@ -6,7 +6,68 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 21:00:49 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/21 21:00:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/22 22:53:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "header.hpp"
+
+Contact::Contact(void)
+{
+    std::cout << "Contact created" << std::endl;
+}
+
+Contact::~Contact(void)
+{
+    std::cout <<  "Contact destroyed" << std::endl;
+}
+
+std::string Contact::getNom(void) const
+{
+    return (this->_nom);
+}
+
+std::string Contact::getPrenom(void) const
+{
+    return (this->_prenom);
+}
+
+std::string Contact::getPseudo(void) const
+{
+    return (this->_pseudo);
+}
+
+std::string Contact::getLogin(void) const
+{
+    return (this->_login);
+}
+
+std::string Contact::getPhone(void) const
+{
+    return (this->_phone);
+}
+
+void Contact::setNom(std::string nom)
+{
+    this->_nom = nom;
+}
+
+void Contact::setPrenom(std::string prenom)
+{
+    this->_prenom = prenom;
+}
+
+void Contact::setPseudo(std::string pseudo)
+{
+    this->_pseudo = pseudo;
+}
+
+void Contact::setLogin(std::string login)
+{
+    this->_login = login;
+}
+
+void Contact::setPhone(std::string phone)
+{
+    this->_phone = phone;
+}
