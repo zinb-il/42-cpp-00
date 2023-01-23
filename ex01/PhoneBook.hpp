@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:58:02 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/22 23:47:51 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:21:29 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class   PhoneBook
         void        addContact(void);
         void        searchContact(void);
         void        printContacts(void) const;
+        void        printContact(int index) const;
     private:
         std::string     _cmd;
         Contact         _contacts[SIZE];

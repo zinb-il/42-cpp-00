@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:33:05 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/22 23:53:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:20:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ std::string PhoneBook::getInput(std::string field) const
 {
     std::string input;
     
-    std::cout << "Plese enter the " << field << std::endl;
+    std::cout << "Please enter the " << field << std::endl;
     if(!(std::getline(std::cin >> std::ws, input)) || std::cin.eof())
         exit(1);
     return (input);
@@ -110,23 +110,74 @@ void PhoneBook::addContact(void)
 
 void    PhoneBook::printContacts(void) const
 {
+    if (!this->_contacts[0].getPrenom().size())
+    {
+        std::cout << RED << "Your PhonBook is empry !" << WHI << std::endl;
+        return ;
+    }
     std::cout << std::setw(10)  << "Index" << " | " << 
     std::setw(10) << "First Name" << " | " << 
     std::setw(10) << "Last Name" << " | " <<
     std::setw(10) << "Nickname" << " | "  << std::endl;
     for (int i = 0 ; i < SIZE ; i++)
     {
+        if (!this->_contacts[i].getPrenom().size())
+            return ;
         std::cout << "---------------------------------------------------" << 
-        std::endl << std::setw(10) << i << " | " << 
+        std::endl << std::setw(10) << i + 1 << " | " << 
         std::setw(10) << this->displayInput(this->_contacts[i].getPrenom()) << " | " << 
         std::setw(10) << this->displayInput(this->_contacts[i].getNom()) << " | " <<
         std::setw(10) << this->displayInput(this->_contacts[i].getLogin()) << " | " << std::endl;
     }
 }
 
+void    PhoneBook::printContact(int index) const
+{
+    if (!this->_contacts[index].getPrenom().size())
+    {
+        std::cout << RED << "This contact doesn't exit" << WHI << std::endl;
+        return ;
+    }
+    std::cout << std::setw(10)  << "Index" << " | " << 
+    std::setw(10) << "First Name" << " | " << 
+    std::setw(10) << "Last Name" << " | " <<
+    std::setw(10) << "Nickname" << " | "  << std::endl;
+    std::cout << "---------------------------------------------------" << 
+    std::endl << std::setw(10) << index + 1 << " | " << 
+    std::setw(10) << this->displayInput(this->_contacts[index].getPrenom()) << " | " << 
+    std::setw(10) << this->displayInput(this->_contacts[index].getNom()) << " | " <<
+    std::setw(10) << this->displayInput(this->_contacts[index].getLogin()) << " | " << std::endl;
+}
+
+int get_index_nb(std::string in)
+{
+    int index;
+    
+    try
+   {
+       index = std::stoi(in);
+   }
+   catch (std::exception &e)
+    {
+        std::cout << RED << "Please enter a valid index" << WHI << std::endl;
+        return (-1);
+    }
+    if (index < 1 || index > 8)
+   {
+       std::cout << RED << "Please enter a valid index" << WHI << std::endl;
+        return (-1);
+    }
+    return (index - 1);
+}
+
 void PhoneBook::searchContact(void)
 {
-    std::cout << BLUE << "Searching for a contact on your PhoneBook" << WHI << std::endl;
-    this->printContacts();
+    int index;
     
+    this->printContacts();
+    std::cout << BLUE << "Searching for a contact on your PhoneBook" << WHI << std::endl << std::endl;
+    index = get_index_nb(this->getInput("Index"));
+    while (index < 0)
+        index = get_index_nb(this->getInput("Index"));
+    this->printContact(index);
 }
