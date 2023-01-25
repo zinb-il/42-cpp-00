@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:33:05 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/23 18:20:40 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:19:53 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void    PhoneBook::setIndex(int index)
 
 void PhoneBook::printHearder(void) const
 {
-    std::cout << "\n Choose a command \t"
+    std::cout << std::endl << "Choose a command \t"
     << RED << "EXIT" << WHI << " | "
     << YELLOW << "ADD" << WHI << " | "
-    << BLUE << "SEARCH" << WHI << "\n"
+    << BLUE << "SEARCH" << WHI << std::endl
     << ">>";
 }
 
@@ -59,6 +59,7 @@ void    PhoneBook::inputCmd(void)
     if (!(std::getline(std::cin, cmd)) || std::cin.eof())
         exit(1);
     this->setCmd(cmd);
+    std::cout << std::endl;
 }
 
 int     PhoneBook::typeCmd(void) const
@@ -108,12 +109,12 @@ void PhoneBook::addContact(void)
     std::cout << GREEN << "Your new contact is successfully added" << WHI << std::endl;
 }
 
-void    PhoneBook::printContacts(void) const
+bool    PhoneBook::printContacts(void) const
 {
     if (!this->_contacts[0].getPrenom().size())
     {
         std::cout << RED << "Your PhonBook is empry !" << WHI << std::endl;
-        return ;
+        return (false);
     }
     std::cout << std::setw(10)  << "Index" << " | " << 
     std::setw(10) << "First Name" << " | " << 
@@ -122,13 +123,14 @@ void    PhoneBook::printContacts(void) const
     for (int i = 0 ; i < SIZE ; i++)
     {
         if (!this->_contacts[i].getPrenom().size())
-            return ;
+            continue ;
         std::cout << "---------------------------------------------------" << 
         std::endl << std::setw(10) << i + 1 << " | " << 
         std::setw(10) << this->displayInput(this->_contacts[i].getPrenom()) << " | " << 
         std::setw(10) << this->displayInput(this->_contacts[i].getNom()) << " | " <<
         std::setw(10) << this->displayInput(this->_contacts[i].getLogin()) << " | " << std::endl;
     }
+    return (true);
 }
 
 void    PhoneBook::printContact(int index) const
@@ -174,8 +176,9 @@ void PhoneBook::searchContact(void)
 {
     int index;
     
-    this->printContacts();
-    std::cout << BLUE << "Searching for a contact on your PhoneBook" << WHI << std::endl << std::endl;
+    if (!(this->printContacts()))
+        return ;
+    std::cout << BLUE << std::endl << "Searching for a contact on your PhoneBook" << WHI << std::endl << std::endl;
     index = get_index_nb(this->getInput("Index"));
     while (index < 0)
         index = get_index_nb(this->getInput("Index"));

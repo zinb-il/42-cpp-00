@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:52:44 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/24 20:26:05 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:43:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ Account::Account(int initial_deposit)
 Account::~Account()
 {
   Account::_displayTimestamp();
-  std::cout << "index:" << this->_accountIndex << ";amount:" << Account::_totalAmount << ";closed" << std::endl;
+  std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
   Account::_totalAmount -= this->_amount;
   Account::_nbAccounts--;
 }
@@ -118,4 +118,9 @@ bool	Account::makeWithdrawal( int withdrawal )
     ";amount:" << this->_amount << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
     return (true);
   }
+}
+
+int		Account::checkAmount( void ) const
+{
+  return (this->_amount);
 }
