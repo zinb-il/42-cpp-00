@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 21:00:49 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/22 22:53:40 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:43:00 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 Contact::Contact(void)
 {
-    std::cout << "Contact created" << std::endl;
 }
 
 Contact::~Contact(void)
 {
-    std::cout <<  "Contact destroyed" << std::endl;
 }
 
 std::string Contact::getNom(void) const

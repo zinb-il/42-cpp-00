@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:58:02 by ziloughm          #+#    #+#             */
-/*   Updated: 2023/01/25 13:10:48 by ziloughm         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:00:23 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ class   PhoneBook
     public:
         PhoneBook();
         ~PhoneBook();
-        int         getIndex(void) const;
         void        setIndex(int index);
+        int         getIndex(void) const;
+        int         get_index_nb(std::string in);
+        int         get_phone_nb(std::string in);
         std::string getCmd(void) const;
         std::string getInput(std::string field) const;
         std::string displayInput(std::string field) const;
@@ -36,8 +38,10 @@ class   PhoneBook
         void        printHearder(void) const;
         void        addContact(void);
         void        searchContact(void);
+        void        printContactHead(void) const;
         bool        printContacts(void) const;
         void        printContact(int index) const;
+        void        printContactLine(int index) const;
     private:
         std::string     _cmd;
         Contact         _contacts[SIZE];
